@@ -302,6 +302,26 @@ function build() {
       });
     }
   }
+  // Año estimado por numeración: las leyes/RL/DL del tipo 0 son correlativas y
+  // cronológicas, así que un número sin fecha se ubica entre sus vecinos fechados.
+  // Se marca anioEstimado=true — es una aproximación, no un dato de la fuente.
+  const conFecha = all
+    .filter((n) => n.tipoCodigo === '0' && n.anio && /^\d+$/.test(String(n.numero)))
+    .map((n) => [parseInt(n.numero, 10), n.anio])
+    .sort((a, b) => a[0] - b[0]);
+  for (const n of all) {
+    if (n.anio || n.tipoCodigo !== '0' || !/^\d+$/.test(String(n.numero))) continue;
+    const num = parseInt(n.numero, 10);
+    let lo = null, hi = null;
+    for (const [k, y] of conFecha) {
+      if (k <= num) lo = [k, y];
+      else { hi = [k, y]; break; }
+    }
+    if (lo && hi) {
+      n.anio = hi[1] === lo[1] ? lo[1] : Math.round(lo[1] + ((num - lo[0]) / (hi[0] - lo[0])) * (hi[1] - lo[1]));
+      n.anioEstimado = true;
+    } else if (lo) { n.anio = lo[1]; n.anioEstimado = true; }
+  }
   all.sort((a, b) => (a.anio - b.anio) || String(a.numero).localeCompare(String(b.numero), 'es', { numeric: true }));
   const out = join(ROOT, 'data', 'leyes.json');
   writeFileSync(out, JSON.stringify({ actualizado: new Date().toISOString(), total: all.length, fuente: 'https://www.leyes.congreso.gob.pe/', normas: all }));

@@ -115,7 +115,7 @@ function render() {
     html += `<div class="norma">
       <div class="meta">
         <span class="tipo">${esc(n.tipo)} N.º ${esc(String(n.numero))}</span>
-        <span class="fecha-pub">📅 ${fechaLegible(n.fecha)}</span>
+        <span class="fecha-pub">📅 ${fechaLegible(n.fecha, n)}</span>
         ${n.vigente ? '' : '<span class="no-vigente">⚠ con observaciones de vigencia</span>'}
       </div>
       <h3>${esc(n.titulo)}</h3>
@@ -130,9 +130,12 @@ function render() {
 }
 
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
-function fechaLegible(f) {
+function fechaLegible(f, n) {
   const m = (f || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-  if (!m) return 'Publicación: fecha no registrada en la fuente';
+  if (!m) {
+    if (n && n.anioEstimado) return `Publicación: c. ${n.anio} (año estimado por numeración; la fuente no registra la fecha)`;
+    return 'Publicación: fecha no registrada en la fuente';
+  }
   return `Publicada el ${+m[1]} de ${MESES[+m[2] - 1] || m[2]} de ${m[3]}`;
 }
 
