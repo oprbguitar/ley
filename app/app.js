@@ -66,7 +66,8 @@ function aplicar() {
 
   filtradas = NORMAS.filter((n) => {
     if (tipo && n.tipo !== tipo) return false;
-    if (n.anio && (n.anio < desde || n.anio > hasta)) return false;
+    const filtraAnio = $('f-desde').value || $('f-hasta').value;
+    if (n.anio ? (n.anio < desde || n.anio > hasta) : filtraAnio) return false;
     if (num && !normalizar(String(n.numero)).includes(num)) return false;
     if (vig === '1' && !n.vigente) return false;
     if (vig === '0' && n.vigente) return false;
@@ -114,7 +115,7 @@ function render() {
     html += `<div class="norma">
       <div class="meta">
         <span class="tipo">${esc(n.tipo)} N.º ${esc(String(n.numero))}</span>
-        <span>Publicada: ${esc(n.fecha)}</span>
+        <span class="fecha-pub">📅 ${fechaLegible(n.fecha)}</span>
         ${n.vigente ? '' : '<span class="no-vigente">⚠ con observaciones de vigencia</span>'}
       </div>
       <h3>${esc(n.titulo)}</h3>
@@ -126,6 +127,13 @@ function render() {
   $('pag-info').textContent = pagina + ' / ' + totalPag;
   $('pag-ant').disabled = pagina <= 1;
   $('pag-sig').disabled = pagina >= totalPag;
+}
+
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
+function fechaLegible(f) {
+  const m = (f || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!m) return 'Publicación: fecha no registrada en la fuente';
+  return `Publicada el ${+m[1]} de ${MESES[+m[2] - 1] || m[2]} de ${m[3]}`;
 }
 
 function etiqueta(t) {
