@@ -119,3 +119,9 @@ header a { color: #ffd9a0; }
 #grafico { width: 100%; background: #fff; border: 1px solid var(--linea); border-radius: 8px; cursor: pointer; }
 footer { padding: 26px 24px 40px; font-size: 13px; color: var(--gris); border-top: 1px solid var(--linea); margin-top: 30px; text-align: center; }
 footer a { color: var(--rojo); }
+.hero.compacta { padding: 20px 24px 16px; }
+.hero.compacta h1 { font-size: 26px; margin-bottom: 4px; }
+.hero.compacta .lema { font-size: 13px; margin-bottom: 14px; }
+.hero.compacta .stat { padding: 8px 16px; min-width: 110px; }
+.hero.compacta .stat span { font-size: 20px; }
+.explica { padding: 14px 24px 4px; }
