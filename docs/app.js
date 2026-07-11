@@ -44,9 +44,12 @@ function poblarFiltros() {
   // el rango llega siempre hasta el año en curso, aunque aún no haya normas publicadas
   const actual = new Date().getFullYear();
   for (let a = anios[anios.length - 1] + 1; a <= actual; a++) anios.push(a);
+  anios.reverse(); // 2026 hacia abajo
   const opts = anios.map((a) => `<option>${a}</option>`).join('');
-  $('f-desde').innerHTML = '<option value="">' + anios[0] + '</option>' + opts;
-  $('f-hasta').innerHTML = '<option value="">' + anios[anios.length - 1] + '</option>' + opts;
+  $('f-desde').innerHTML = '<option value="">' + anios[anios.length - 1] + '</option>' + opts;
+  $('f-hasta').innerHTML = '<option value="">' + anios[0] + '</option>' + opts;
+  const hoy = $('fecha-hoy');
+  if (hoy) hoy.textContent = new Date().toLocaleDateString('es-PE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 function normalizar(s) {

@@ -125,3 +125,5 @@ footer a { color: var(--rojo); }
 .hero.compacta .stat { padding: 8px 16px; min-width: 110px; }
 .hero.compacta .stat span { font-size: 20px; }
 .explica { padding: 14px 24px 4px; }
+
+.fecha-hoy { font-size: 12.5px; color: var(--gris); font-style: italic; align-self: center; padding-left: 6px; text-transform: capitalize; }
