@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leyes del Congreso de la República del Perú</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>⚖ Archivo de Leyes del Congreso de la República del Perú</h1>
+  <p>
+    <span id="total">…</span> normas · actualizado: <span id="actualizado">…</span> ·
+    fuente: <a href="https://www.leyes.congreso.gob.pe/" target="_blank" rel="noopener">leyes.congreso.gob.pe</a>
+  </p>
+</header>
+
+<div id="filtros">
+  <label>Tipo de norma
+    <select id="f-tipo"><option value="">Todos</option></select>
+  </label>
+  <label>Año desde
+    <select id="f-desde"><option value=""></option></select>
+  </label>
+  <label>Año hasta
+    <select id="f-hasta"><option value=""></option></select>
+  </label>
+  <label>Número
+    <input id="f-numero" type="text" placeholder="p. ej. 31000" size="10">
+  </label>
+  <label>Buscar en título / contenido
+    <input id="f-texto" type="search" placeholder="p. ej. educación universitaria">
+  </label>
+  <label>Vigencia
+    <select id="f-vigencia">
+      <option value="">Todas</option>
+      <option value="1">Sin observaciones</option>
+      <option value="0">Con observaciones (derogadas, etc.)</option>
+    </select>
+  </label>
+  <button id="btn-buscar">Buscar</button>
+  <button id="btn-limpiar" class="sec">Limpiar</button>
+</div>
+
+<div id="resumen"></div>
+<div id="lista"><p id="aviso">Cargando base de datos…</p></div>
+<div id="paginacion">
+  <button id="pag-ant">← Anterior</button>
+  <span id="pag-info"></span>
+  <button id="pag-sig">Siguiente →</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
