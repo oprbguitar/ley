@@ -275,7 +275,9 @@ function build() {
       const det = r.detalle ? detalles[r.detalle] : null;
       let fecha = r.fecha && r.fecha.includes('/') ? r.fecha : '';
       if (!fecha && det) fecha = det.publicacion?.includes('/') ? det.publicacion : det.promulgacion || '';
-      const year = parseInt(fecha.split('/')[2], 10) || null;
+      let year = parseInt(fecha.split('/')[2], 10) || null;
+      if (year && year >= 3000 && year <= 3099) year -= 1000; // errores de tipeo de la fuente (3017 → 2017)
+      if (year && (year < 1820 || year > HASTA + 1)) year = null;
       const key = `${r.norma}|${r.numero}`;
       if (seen.has(key)) continue;
       seen.add(key);

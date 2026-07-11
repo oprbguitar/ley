@@ -41,6 +41,9 @@ function poblarFiltros() {
     '<option value="">Todos</option>' +
     tipos.map((t) => `<option>${t}</option>`).join('');
   const anios = [...new Set(NORMAS.map((n) => n.anio).filter(Boolean))].sort((a, b) => a - b);
+  // el rango llega siempre hasta el año en curso, aunque aún no haya normas publicadas
+  const actual = new Date().getFullYear();
+  for (let a = anios[anios.length - 1] + 1; a <= actual; a++) anios.push(a);
   const opts = anios.map((a) => `<option>${a}</option>`).join('');
   $('f-desde').innerHTML = '<option value="">' + anios[0] + '</option>' + opts;
   $('f-hasta').innerHTML = '<option value="">' + anios[anios.length - 1] + '</option>' + opts;
