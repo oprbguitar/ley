@@ -18,6 +18,13 @@ filtros por:
 Cada norma enlaza a sus **archivos adjuntos**: PDF oficial, texto consolidado,
 expediente virtual y ficha de detalle del Congreso.
 
+## GitHub Page
+
+La carpeta `docs/` contiene una versión web pública (portada explicativa +
+estadísticas + gráfico por año + buscador). Para activarla: **Settings →
+Pages → Source: Deploy from a branch → Branch: `main` / carpeta `/docs`**.
+Quedará en `https://oprbguitar.github.io/ley/`.
+
 ## Estructura
 
 ```
