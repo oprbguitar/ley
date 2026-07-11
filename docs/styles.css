@@ -1,0 +1,121 @@
+:root {
+  --rojo: #9d2323;
+  --crema: #faf7f2;
+  --tinta: #2b2620;
+  --gris: #6f675c;
+  --linea: #e4ddd2;
+  --acento: #b98a2f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--crema);
+  color: var(--tinta);
+}
+header {
+  background: var(--rojo);
+  color: #fff;
+  padding: 18px 24px 14px;
+}
+header h1 { margin: 0; font-size: 22px; font-weight: normal; letter-spacing: 0.5px; }
+header p { margin: 4px 0 0; font-size: 13px; opacity: 0.85; }
+header a { color: #ffd9a0; }
+#filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--linea);
+  align-items: end;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+#filtros label {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  color: var(--gris);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  gap: 3px;
+}
+#filtros input, #filtros select {
+  font: 14px Georgia, serif;
+  padding: 6px 8px;
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  background: var(--crema);
+  color: var(--tinta);
+}
+#filtros input[type="search"] { min-width: 260px; }
+#filtros button {
+  font: 13px Georgia, serif;
+  padding: 7px 14px;
+  border: 1px solid var(--rojo);
+  border-radius: 4px;
+  background: var(--rojo);
+  color: #fff;
+  cursor: pointer;
+}
+#filtros button.sec { background: transparent; color: var(--rojo); }
+#resumen { padding: 10px 24px; font-size: 13px; color: var(--gris); }
+#lista { padding: 0 24px 40px; max-width: 1100px; }
+.anio-sep {
+  font-size: 26px;
+  color: var(--rojo);
+  border-bottom: 2px solid var(--rojo);
+  margin: 28px 0 10px;
+  padding-bottom: 2px;
+}
+.norma {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 8px 0;
+}
+.norma .meta { font-size: 12px; color: var(--gris); display: flex; gap: 14px; flex-wrap: wrap; }
+.norma .meta .tipo { color: var(--rojo); font-weight: bold; letter-spacing: 0.4px; }
+.norma .meta .no-vigente { color: #b04a00; font-weight: bold; }
+.norma h3 { margin: 6px 0 4px; font-size: 15px; font-weight: normal; line-height: 1.4; }
+.norma .obs { font-size: 12.5px; color: var(--gris); font-style: italic; margin: 2px 0 6px; }
+.norma .adjuntos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.norma .adjuntos a {
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--rojo);
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  padding: 3px 10px;
+  background: var(--crema);
+}
+.norma .adjuntos a:hover { background: var(--rojo); color: #fff; }
+#paginacion { display: flex; gap: 8px; padding: 16px 24px 50px; align-items: center; }
+#paginacion button {
+  font: 13px Georgia, serif; padding: 6px 12px; border: 1px solid var(--linea);
+  background: #fff; border-radius: 4px; cursor: pointer;
+}
+#paginacion button:disabled { opacity: 0.4; cursor: default; }
+#aviso { padding: 30px 24px; font-size: 15px; }
+
+/* --- GitHub Pages: portada explicativa --- */
+.hero { background: linear-gradient(160deg, #9d2323 0%, #6d1414 100%); color: #fff; padding: 40px 24px 30px; text-align: center; }
+.hero h1 { font-size: 40px; margin: 0 0 10px; font-weight: normal; letter-spacing: 1px; }
+.hero .lema { max-width: 720px; margin: 0 auto 22px; font-size: 16px; line-height: 1.5; opacity: 0.95; }
+.hero a { color: #ffd9a0; }
+.stats { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.stat { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 12px 22px; min-width: 130px; }
+.stat span { font-size: 26px; display: block; }
+.stat label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+.explica { max-width: 1050px; margin: 0 auto; padding: 26px 24px 10px; }
+.explica h2 { color: var(--rojo); font-weight: normal; border-bottom: 2px solid var(--rojo); padding-bottom: 4px; }
+.explica .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.explica h3 { margin: 8px 0 4px; font-size: 16px; }
+.explica p { font-size: 14px; line-height: 1.55; color: var(--tinta); margin: 4px 0 10px; }
+.explica .nota { font-size: 12.5px; color: var(--gris); font-style: italic; }
+#grafico { width: 100%; background: #fff; border: 1px solid var(--linea); border-radius: 8px; cursor: pointer; }
+footer { padding: 26px 24px 40px; font-size: 13px; color: var(--gris); border-top: 1px solid var(--linea); margin-top: 30px; text-align: center; }
+footer a { color: var(--rojo); }

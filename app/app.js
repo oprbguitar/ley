@@ -19,8 +19,11 @@ async function cargar() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     NORMAS = data.normas;
-    $('actualizado').textContent = new Date(data.actualizado).toLocaleDateString('es-PE');
-    $('total').textContent = data.total.toLocaleString('es-PE');
+    const act = $('actualizado');
+    if (act) act.textContent = new Date(data.actualizado).toLocaleDateString('es-PE');
+    const tot = $('total');
+    if (tot) tot.textContent = data.total.toLocaleString('es-PE');
+    window.META = data;
     poblarFiltros();
     aplicar();
   } catch (e) {

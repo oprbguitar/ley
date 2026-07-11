@@ -306,6 +306,7 @@ function build() {
   // copia para la extensión y la app
   writeFileSync(join(ROOT, 'app', 'leyes.json'), readFileSync(out));
   writeFileSync(join(ROOT, 'extension', 'leyes.json'), readFileSync(out));
+  writeFileSync(join(ROOT, 'docs', 'leyes.json'), readFileSync(out));
   console.log(`consolidado: ${all.length} normas -> data/leyes.json`);
 }
 

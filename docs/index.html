@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leyes del Perú — Archivo del Congreso de la República</title>
+<meta name="description" content="Archivo consultable de la legislación peruana: leyes, resoluciones legislativas, decretos ley y más, ordenadas por año con filtros por tipo, número, texto y vigencia.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1>⚖ Leyes del Perú</h1>
+  <p class="lema">Todas las normas del <b>Archivo Digital de la Legislación del Perú</b> del
+  Congreso de la República, en una sola página: ordenadas por año, filtrables y con
+  enlaces a sus documentos oficiales.</p>
+  <div id="stats" class="stats">
+    <div class="stat"><span id="st-total">…</span><label>normas</label></div>
+    <div class="stat"><span id="st-rango">…</span><label>periodo</label></div>
+    <div class="stat"><span id="st-tipos">…</span><label>tipos de norma</label></div>
+    <div class="stat"><span id="st-act">…</span><label>actualizado</label></div>
+  </div>
+</header>
+
+<section class="explica">
+  <h2>¿Qué es esto?</h2>
+  <div class="cols">
+    <div>
+      <h3>📜 La fuente</h3>
+      <p>Los datos provienen del sitio oficial
+      <a href="https://www.leyes.congreso.gob.pe/" target="_blank" rel="noopener">leyes.congreso.gob.pe</a>,
+      que archiva la legislación peruana desde la Ley N.º 1 (1904): leyes,
+      resoluciones legislativas, decretos ley, decretos legislativos, decretos de
+      urgencia y más. Ese sitio es difícil de consultar; este archivo lo reordena.</p>
+    </div>
+    <div>
+      <h3>🔎 Cómo usarlo</h3>
+      <p>Escribe en <b>Buscar</b> cualquier palabra del título (p. ej. «universidad»,
+      «tributario»), acota por <b>tipo de norma</b>, <b>rango de años</b> o
+      <b>número</b>, y filtra por <b>vigencia</b>. Los resultados se agrupan por año
+      en orden ascendente.</p>
+    </div>
+    <div>
+      <h3>📎 Los adjuntos</h3>
+      <p>Cada norma enlaza a sus documentos oficiales: el <b>PDF original</b>, el
+      <b>texto consolidado</b> (con modificaciones incorporadas), el
+      <b>expediente virtual</b> del Congreso y su <b>ficha de detalle</b>.</p>
+    </div>
+  </div>
+  <h2>Normas por año</h2>
+  <p class="nota">Pasa el cursor sobre las barras; haz clic en una barra para filtrar ese año.</p>
+  <canvas id="grafico" height="170"></canvas>
+</section>
+
+<div id="filtros">
+  <label>Tipo de norma
+    <select id="f-tipo"><option value="">Todos</option></select>
+  </label>
+  <label>Año desde
+    <select id="f-desde"><option value=""></option></select>
+  </label>
+  <label>Año hasta
+    <select id="f-hasta"><option value=""></option></select>
+  </label>
+  <label>Número
+    <input id="f-numero" type="text" placeholder="p. ej. 31000" size="10">
+  </label>
+  <label>Buscar en título / contenido
+    <input id="f-texto" type="search" placeholder="p. ej. educación universitaria">
+  </label>
+  <label>Vigencia
+    <select id="f-vigencia">
+      <option value="">Todas</option>
+      <option value="1">Sin observaciones</option>
+      <option value="0">Con observaciones (derogadas, etc.)</option>
+    </select>
+  </label>
+  <button id="btn-buscar">Buscar</button>
+  <button id="btn-limpiar" class="sec">Limpiar</button>
+</div>
+
+<div id="resumen"></div>
+<div id="lista"><p id="aviso">Cargando base de datos (varios MB, unos segundos)…</p></div>
+<div id="paginacion">
+  <button id="pag-ant">← Anterior</button>
+  <span id="pag-info"></span>
+  <button id="pag-sig">Siguiente →</button>
+</div>
+
+<footer>
+  <p>Proyecto de código abierto: <a href="https://github.com/oprbguitar/ley" target="_blank" rel="noopener">github.com/oprbguitar/ley</a>
+  — incluye la app local y una extensión de Chrome con esta misma base de datos.</p>
+  <p>Los datos pertenecen al Congreso de la República del Perú. Este sitio solo los
+  reordena para facilitar su consulta; verifica siempre el texto oficial en los enlaces.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
